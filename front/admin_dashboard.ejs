@@ -1,0 +1,26 @@
+<%- include("partials/header"); -%>
+
+<h1>Admin Dashboard</h1>
+
+<% if (posts.length === 0) { %>
+  <div class="alert alert-info" role="alert">
+    No posts found.
+  </div>
+<% } else { %>
+  <div class="row">
+    <% posts.forEach(post => { %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title %></h5>
+            <p class="card-text"><%= post.content.substring(0, 100) %></p>
+            <a href="/edit/<%= post.id %>" class="btn btn-primary mr-2">Edit</a>
+            <a href="/delete/<%= post.id %>" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+<% } %>
+
+<%- include("partials/footer"); -%>

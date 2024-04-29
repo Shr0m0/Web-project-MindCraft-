@@ -1,0 +1,26 @@
+
+<%- include("partials/header"); -%>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2><%= post.title %></h2>
+      <p><%= post.content %></p>
+      
+
+      
+      <% if (currentUser && post.user_id === currentUser.id) { %>
+        
+        <div class="btn-group" role="group" aria-label="Post Actions">
+          <a href="/edit/<%= post.id %>" class="btn btn-primary">Edit</a>
+          <form action="/delete/<%= post.id %>" method="POST">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+
+<%- include("partials/footer"); -%>
